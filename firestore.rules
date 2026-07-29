@@ -1,0 +1,107 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Helper Functions ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        (request.auth.token.email == "eddywachira4@gmail.com" && request.auth.token.email_verified == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // --- Schema Validation Helpers ---
+    function isValidConsultation(data) {
+      return data.fullName is string && data.fullName.size() > 0 && data.fullName.size() <= 100
+        && data.email is string && data.email.size() > 0 && data.email.size() <= 100
+        && data.serviceType is string && data.serviceType.size() > 0 && data.serviceType.size() <= 100
+        && data.projectScope is string && data.projectScope.size() > 0 && data.projectScope.size() <= 2000
+        && data.status is string && (data.status in ['Pending', 'Contacted', 'Scheduled', 'Completed', 'Archived'])
+        && data.createdAt is string && data.createdAt.size() <= 100
+        && (!('phone' in data) || (data.phone is string && data.phone.size() <= 30))
+        && (!('county' in data) || (data.county is string && data.county.size() <= 50))
+        && (!('estimatedBudget' in data) || (data.estimatedBudget is string && data.estimatedBudget.size() <= 50))
+        && (!('preferredDate' in data) || (data.preferredDate is string && data.preferredDate.size() <= 50))
+        && (!('attachedEstimate' in data) || (data.attachedEstimate is string && data.attachedEstimate.size() <= 1000))
+        && (!('userId' in data) || (data.userId is string && data.userId.size() <= 128));
+    }
+
+    function isValidEstimate(data) {
+      return data.buildingType is string && data.buildingType.size() > 0 && data.buildingType.size() <= 100
+        && data.finishLevel is string && data.finishLevel.size() > 0 && data.finishLevel.size() <= 50
+        && (data.grossFloorArea is number || data.grossFloorArea is int) && data.grossFloorArea > 0
+        && (data.estimatedCostKes is number || data.estimatedCostKes is int) && data.estimatedCostKes >= 0
+        && data.userId is string && data.userId.size() > 0 && data.userId.size() <= 128
+        && data.createdAt is string && data.createdAt.size() <= 100
+        && (!('title' in data) || (data.title is string && data.title.size() <= 100))
+        && (!('notes' in data) || (data.notes is string && data.notes.size() <= 1000));
+    }
+
+    function isValidUser(data) {
+      return data.email is string && data.email.size() > 0 && data.email.size() <= 100
+        && data.createdAt is string && data.createdAt.size() <= 100
+        && (!('displayName' in data) || (data.displayName is string && data.displayName.size() <= 100))
+        && (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 500));
+    }
+
+    // --- Collection Rules ---
+
+    // 1. Consultations Collection
+    match /consultations/{consultationId} {
+      allow get: if isValidId(consultationId) && (isAdmin() || (isSignedIn() && existing().userId == request.auth.uid));
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if isValidId(consultationId) && isValidConsultation(incoming()) && (
+        !('userId' in incoming()) || incoming().userId == "" || (isSignedIn() && incoming().userId == request.auth.uid)
+      );
+      allow update: if isValidId(consultationId) && isValidConsultation(incoming()) && (
+        isAdmin() || (
+          isSignedIn() && existing().userId == request.auth.uid && incoming().userId == existing().userId
+        )
+      );
+      allow delete: if isValidId(consultationId) && isAdmin();
+    }
+
+    // 2. Saved Estimates Collection
+    match /estimates/{estimateId} {
+      allow get: if isValidId(estimateId) && (isAdmin() || (isSignedIn() && existing().userId == request.auth.uid));
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if isValidId(estimateId) && isSignedIn() && incoming().userId == request.auth.uid && isValidEstimate(incoming());
+      allow update: if isValidId(estimateId) && isSignedIn() && existing().userId == request.auth.uid && incoming().userId == existing().userId && isValidEstimate(incoming());
+      allow delete: if isValidId(estimateId) && (isAdmin() || (isSignedIn() && existing().userId == request.auth.uid));
+    }
+
+    // 3. User Profiles Collection
+    match /users/{userId} {
+      allow get: if isValidId(userId) && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isValidId(userId) && isOwner(userId) && isValidUser(incoming());
+      allow update: if isValidId(userId) && isOwner(userId) && isValidUser(incoming());
+      allow delete: if isValidId(userId) && isAdmin();
+    }
+  }
+}
