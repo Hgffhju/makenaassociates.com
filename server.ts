@@ -109,6 +109,19 @@ Thank you for inquiring about your building project!
     });
   });
 
+  // Careers & Job Applications Endpoint
+  app.post("/api/careers", (req, res) => {
+    const application = req.body;
+    console.log("New Job Application Received:", application);
+
+    return res.json({
+      success: true,
+      message: "Job application and KES 350 verification code recorded.",
+      referenceCode: application.referenceCode || `JOB-${Math.floor(100000 + Math.random() * 900000)}`,
+      receivedAt: new Date().toISOString(),
+    });
+  });
+
   // Serve Vite in Development, Static in Production
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({

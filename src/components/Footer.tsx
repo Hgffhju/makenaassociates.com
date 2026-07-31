@@ -70,6 +70,7 @@ export const Footer: React.FC = () => {
               <li><a href="#ai-advisor" className="hover:text-white transition-colors">AI Building Assistant</a></li>
               <li><a href="#process" className="hover:text-white transition-colors">7-Stage Framework</a></li>
               <li><a href="#team" className="hover:text-white transition-colors">Practice Leadership</a></li>
+              <li><a href="#careers" className="hover:text-white transition-colors">Careers & Recruitment (KES 350 Vetting)</a></li>
               <li><a href="#about" className="hover:text-white transition-colors">About Practice</a></li>
             </ul>
           </div>
@@ -86,11 +87,11 @@ export const Footer: React.FC = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#B76E4E]" />
-                <a href="mailto:info@makenaassociates.com" className="hover:text-white">info@makenaassociates.com</a>
+                <a href="mailto:maingichristine1996@gmail.com" className="hover:text-white">maingichristine1996@gmail.com</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#B76E4E] shrink-0 mt-0.5" />
-                <span>Ol Kalou, Nyandarua, Kenya</span>
+                <span>Ol Kalou Town, Nyandarua County<br /><strong className="text-[#D4916E]">Serving Central Kenya & Environs</strong></span>
               </li>
               <li className="pt-2 text-[11px] text-white/40">
                 Mon – Fri: 8:00am – 5:00pm<br />

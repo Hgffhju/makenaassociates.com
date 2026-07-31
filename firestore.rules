@@ -69,6 +69,23 @@ service cloud.firestore {
         && (!('photoURL' in data) || (data.photoURL is string && data.photoURL.size() <= 500));
     }
 
+    function isValidJobApplication(data) {
+      return data.fullName is string && data.fullName.size() > 0 && data.fullName.size() <= 100
+        && data.email is string && data.email.size() > 0 && data.email.size() <= 100
+        && data.phone is string && data.phone.size() > 0 && data.phone.size() <= 30
+        && data.position is string && data.position.size() > 0 && data.position.size() <= 100
+        && data.mpesaTransactionCode is string && data.mpesaTransactionCode.size() > 0 && data.mpesaTransactionCode.size() <= 50
+        && data.status is string && (data.status in ['Pending Verification', 'Shortlisted', 'Rejected & Refund Pending', 'Refund Issued', 'Interview Scheduled'])
+        && data.createdAt is string && data.createdAt.size() <= 100
+        && (!('registrationDetails' in data) || (data.registrationDetails is string && data.registrationDetails.size() <= 100))
+        && (!('experienceYears' in data) || (data.experienceYears is string && data.experienceYears.size() <= 30))
+        && (!('county' in data) || (data.county is string && data.county.size() <= 50))
+        && (!('portfolioUrl' in data) || (data.portfolioUrl is string && data.portfolioUrl.size() <= 500))
+        && (!('coverNote' in data) || (data.coverNote is string && data.coverNote.size() <= 1500))
+        && (!('feeAmountKes' in data) || (data.feeAmountKes is number || data.feeAmountKes is int))
+        && (!('userId' in data) || (data.userId is string && data.userId.size() <= 128));
+    }
+
     // --- Collection Rules ---
 
     // 1. Consultations Collection
@@ -102,6 +119,21 @@ service cloud.firestore {
       allow create: if isValidId(userId) && isOwner(userId) && isValidUser(incoming());
       allow update: if isValidId(userId) && isOwner(userId) && isValidUser(incoming());
       allow delete: if isValidId(userId) && isAdmin();
+    }
+
+    // 4. Job Applications Collection
+    match /job_applications/{applicationId} {
+      allow get: if isValidId(applicationId) && (isAdmin() || (isSignedIn() && existing().userId == request.auth.uid));
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      allow create: if isValidId(applicationId) && isValidJobApplication(incoming()) && (
+        !('userId' in incoming()) || incoming().userId == "" || (isSignedIn() && incoming().userId == request.auth.uid)
+      );
+      allow update: if isValidId(applicationId) && isValidJobApplication(incoming()) && (
+        isAdmin() || (
+          isSignedIn() && existing().userId == request.auth.uid && incoming().userId == existing().userId
+        )
+      );
+      allow delete: if isValidId(applicationId) && isAdmin();
     }
   }
 }

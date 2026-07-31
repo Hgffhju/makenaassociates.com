@@ -31,8 +31,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setCurrentUser(user);
       if (user) {
         // Check if admin email or admin record
-        const adminEmail = 'eddywachira4@gmail.com';
-        if (user.email?.toLowerCase() === adminEmail.toLowerCase()) {
+        const adminEmails = ['eddywachira4@gmail.com', 'maingichristine1996@gmail.com'];
+        if (user.email && adminEmails.some(e => e.toLowerCase() === user.email?.toLowerCase())) {
           setIsAdmin(true);
         } else {
           setIsAdmin(false);

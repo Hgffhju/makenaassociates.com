@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenConsultation
             <div className="inline-flex items-center gap-2.5">
               <div className="w-8 h-[2px] bg-[#B76E4E]"></div>
               <span className="text-xs font-semibold tracking-[0.18em] uppercase text-[#B76E4E]">
-                Kenya · Central Highlands & Nationwide
+                Central Kenya & Environs Practice · Ol Kalou, Nyeri, Nakuru, Kiambu & Nairobi
               </span>
             </div>
 
@@ -26,7 +26,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenCalculator, onOpenConsultation
             </h1>
 
             <p className="text-[#4A5A6A] text-base sm:text-lg leading-relaxed max-w-xl">
-              Integrated architectural design and quantity surveying practice in Kenya — delivering inspiring highland spaces with structural certainty and fiscal discipline, from concept through handover.
+              Premier integrated architectural design and quantity surveying practice serving <strong className="text-[#1F2527] font-semibold">Central Kenya & Environs</strong> — delivering climate-responsive highland spaces with structural certainty and fiscal discipline.
             </p>
 
             {/* CTA Buttons */}

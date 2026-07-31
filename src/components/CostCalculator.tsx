@@ -213,18 +213,20 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onAttachToConsul
             {/* Location in Kenya */}
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-[#1F2527] mb-2">
-                Location / Region in Kenya
+                Target County / Location (Central Kenya & Environs)
               </label>
               <select
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 className="w-full bg-white border border-[#1F2527]/20 px-3.5 py-2.5 text-sm text-[#1F2527] focus:border-[#B76E4E] outline-none"
               >
-                <option value="highlands">Central Highlands (Ol Kalou, Nyahururu, Kinangop, Nyeri)</option>
-                <option value="nairobi">Nairobi Metro & Environs (Kiambu, Kajiado, Machakos)</option>
-                <option value="rift">Rift Valley (Nakuru, Naivasha, Eldoret)</option>
-                <option value="coast">Coastal Region (Mombasa, Kilifi, Diani)</option>
-                <option value="remote">Remote / Rural Location</option>
+                <option value="highlands">Nyandarua & Ol Kalou (Ol Kalou, Nyahururu, Engineer, Kinangop)</option>
+                <option value="nyeri">Nyeri, Kirinyaga & Murang'a (Nyeri, Karatina, Kerugoya, Murang'a)</option>
+                <option value="kiambu">Kiambu & Thika Corridor (Kiambu, Ruiru, Thika, Limuru)</option>
+                <option value="nakuru">Nakuru, Naivasha & Gilgil (Nakuru, Naivasha, Gilgil)</option>
+                <option value="laikipia">Laikipia & Nanyuki (Nanyuki, Rumuruti, Timau)</option>
+                <option value="nairobi">Nairobi Metro & Environs (Nairobi, Kajiado, Machakos)</option>
+                <option value="other">Other Kenya Region</option>
               </select>
             </div>
 

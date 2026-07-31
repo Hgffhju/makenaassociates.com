@@ -22,7 +22,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Dr. & Mrs. Mwangi',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Completed'
   },
   {
@@ -46,7 +46,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Ol Kalou Investments Co. Ltd',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Completed'
   },
   {
@@ -70,7 +70,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Kinangop Community Development Trust',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Completed'
   },
   {
@@ -94,7 +94,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Eng. & Dr. Kamau',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Completed'
   },
   {
@@ -118,7 +118,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Nyandarua County Water Services Board',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Completed'
   },
   {
@@ -142,7 +142,7 @@ export const PROJECTS_DATA: Project[] = [
     ],
     clientName: 'Nyahururu Commercial Properties Ltd',
     architect: 'James Mwangi, AAK',
-    qsLead: 'Grace Njoroge, MBORAQS',
+    qsLead: 'Christine Maingi, MBORAQS',
     status: 'Under Construction'
   }
 ];
@@ -154,18 +154,18 @@ export const TEAM_MEMBERS: TeamMember[] = [
     title: 'Principal Architect & Managing Director',
     credentials: 'B.Arch (UoN) · Registered Architect (BORAQS / AAK)',
     bio: 'James brings over 15 years of master planning, architectural design, and project leadership across Kenya. He holds a Bachelor of Architecture from the University of Nairobi and is a registered member of the Architectural Association of Kenya (AAK). He specializes in highland climate-responsive architecture and value engineering.',
-    email: 'james@makenaassociates.com',
+    email: 'maingichristine1996@gmail.com',
     linkedin: 'https://linkedin.com',
     badge: 'AAK REGISTERED',
     imageBgColor: '#1F2527'
   },
   {
     id: 'team-2',
-    name: 'Grace Njoroge, MBORAQS',
+    name: 'Christine Maingi, MBORAQS',
     title: 'Senior Quantity Surveyor & Partner',
     credentials: 'BSc QS (JKUAT) · Registered Quantity Surveyor (BORAQS)',
-    bio: 'Grace leads the Quantity Surveying and Cost Management division at Makena & Associates. With 12+ years in cost planning, contract administration, and tendering, she has overseen over KES 3.5 Billion in construction budgets. Her rigorous financial oversight ensures client projects remain strictly within budget constraints.',
-    email: 'grace@makenaassociates.com',
+    bio: 'Christine leads the Quantity Surveying and Cost Management division at Makena & Associates. With 12+ years in cost planning, contract administration, and tendering, she has overseen over KES 3.5 Billion in construction budgets. Her rigorous financial oversight ensures client projects remain strictly within budget constraints.',
+    email: 'maingichristine1996@gmail.com',
     linkedin: 'https://linkedin.com',
     badge: 'BORAQS REGISTERED',
     imageBgColor: '#5A7C5E'
@@ -176,7 +176,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     title: 'Senior Project Manager & Construction Lead',
     credentials: 'BSc Civil Eng (KU) · PMP Certified · NCA Licensed',
     bio: 'Peter leads site supervision, contractor management, and QA/QC compliance. He brings a strong background in structural engineering and site safety management under NCA and DOSHS regulations. He ensures contractors meet strict quality standards and completion deadlines.',
-    email: 'peter@makenaassociates.com',
+    email: 'maingichristine1996@gmail.com',
     linkedin: 'https://linkedin.com',
     badge: 'PROJECT MANAGER',
     imageBgColor: '#D4916E'
@@ -187,7 +187,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     title: 'Environmental & Regulatory Compliance Lead',
     credentials: 'BSc Environmental Studies · NEMA Lead Expert',
     bio: 'Faith manages Environmental Impact Assessments (EIA), NEMA licensing, and County Government planning approvals. She ensures that every project meets local environmental laws, water usage guidelines, and community sustainability benchmarks.',
-    email: 'faith@makenaassociates.com',
+    email: 'maingichristine1996@gmail.com',
     linkedin: 'https://linkedin.com',
     badge: 'NEMA LEAD EXPERT',
     imageBgColor: '#4A5A6A'
@@ -216,7 +216,7 @@ At Makena & Associates Ltd, our architects and quantity surveyors sit together f
     date: '14 May 2025',
     readTime: '5 min read',
     image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
-    author: 'Grace Njoroge, MBORAQS',
+    author: 'Christine Maingi, MBORAQS',
     featured: true
   },
   {

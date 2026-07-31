@@ -26,9 +26,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenConsulta
     { name: 'Cost Calculator', href: '#estimator', onClick: onOpenCalculator },
     { name: 'Sectors', href: '#sectors' },
     { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Reviews & Offices', href: '#local-trust' },
     { name: 'AI Advisor', href: '#ai-advisor' },
     { name: 'Process', href: '#process' },
     { name: 'Team', href: '#team' },
+    { name: 'Ad Campaigns & Share', href: '#campaigns' },
+    { name: 'Careers', href: '#careers' },
     { name: 'Insights', href: '#insights' },
     { name: 'About', href: '#about' },
   ];
@@ -45,10 +48,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCalculator, onOpenConsulta
             </span>
             <span className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-[#B76E4E]" />
-              <a href="mailto:info@makenaassociates.com" className="hover:text-white transition-colors">info@makenaassociates.com</a>
+              <a href="mailto:maingichristine1996@gmail.com" className="hover:text-white transition-colors">maingichristine1996@gmail.com</a>
             </span>
             <span className="text-white/40">|</span>
-            <span className="text-white/60">Ol Kalou, Kenya</span>
+            <span className="text-[#D4916E] font-medium">Central Kenya & Environs</span>
+            <span className="text-white/40">|</span>
+            <span className="text-white/60">Ol Kalou, HQ</span>
           </div>
           <div className="flex items-center gap-4 text-xs">
             <span className="text-[#D4916E] font-medium">AAK & BORAQS Practice</span>

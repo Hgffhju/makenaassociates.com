@@ -65,7 +65,7 @@ export const SectorsSection: React.FC<SectorsSectionProps> = ({ onOpenConsultati
             Specialized Practice Across Key Growth Sectors
           </h2>
           <p className="text-[#4A5A6A] text-xs sm:text-sm mt-3 leading-relaxed">
-            Every sector has unique regulatory parameters, structural requirements, and tenant absorption dynamics. We bring tailored expertise across all major building categories.
+            Every sector in Central Kenya & Environs has unique county planning guidelines, highland climate parameters, and tenant absorption dynamics. We bring tailored architectural and QS expertise across all major building categories in Nyandarua, Nyeri, Kiambu, Nakuru, Kirinyaga, Murang'a, Laikipia, and Nairobi environs.
           </p>
         </div>
 

@@ -5,11 +5,14 @@ import { TrustBar } from './components/TrustBar';
 import { ServicesSection } from './components/ServicesSection';
 import { CostCalculator } from './components/CostCalculator';
 import { PortfolioSection } from './components/PortfolioSection';
+import { LocalReviewsAndMapSection } from './components/LocalReviewsAndMapSection';
 import { ProjectModal } from './components/ProjectModal';
 import { AiAdvisor } from './components/AiAdvisor';
 import { SectorsSection } from './components/SectorsSection';
 import { ProcessSection } from './components/ProcessSection';
 import { TeamSection } from './components/TeamSection';
+import { CareersSection } from './components/CareersSection';
+import { AdCampaignSection } from './components/AdCampaignSection';
 import { InsightsSection } from './components/InsightsSection';
 import { FaqSection } from './components/FaqSection';
 import { ConsultationSection } from './components/ConsultationSection';
@@ -86,6 +89,9 @@ function MainApp() {
         onSelectProject={(proj) => setSelectedProject(proj)}
       />
 
+      {/* Google Reviews, Office Maps & Before/After CompanyCam Slider */}
+      <LocalReviewsAndMapSection />
+
       {/* AI Feasibility Advisor */}
       <AiAdvisor />
 
@@ -99,6 +105,18 @@ function MainApp() {
 
       {/* Leadership & Team */}
       <TeamSection />
+
+      {/* Careers & Recruitment */}
+      <CareersSection />
+
+      {/* Official Marketing & Media Campaign Showcase */}
+      <AdCampaignSection
+        onOpenCalculator={() => {
+          const el = document.getElementById('estimator');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+        onOpenConsultation={() => handleOpenConsultation()}
+      />
 
       {/* Insights & Articles */}
       <InsightsSection />
